@@ -1,10 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br" class="h-full">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>JanJan</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Janderson - Software Engineer" />
+    <title>Janderson Souza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    JanJan 👨🏻‍💻
+  <body class="h-full flex flex-col">
+    <section class="p-4 flex-1 bg-background">
+      <div id="messages_content"></div>
+    </section>
+
+    <section class="p-4 bg-background">
+      <h2 class="text-4xl font-bold text-primary_700">Ask about me.</h2>
+      <div class="mb-6">
+        <input
+          type="text"
+          id="large-input"
+          placeholder="Type here"
+          class="block w-full p-4 rounded-lg text-primary_700"
+        />
+      </div>
+    </section>
+
+    <footer class="bg-primary_700 text-white text-xs p-4 py-2 text-right">
+      <p>© 2024 Janderson Souza</p>
+    </footer>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary_700: "#5F6F65",
+              primary_600: "#808D7C",
+              primary_500: "#9CA986",
+              primary_400: "#C9DABF",
+              background: "#eef3eb",
+            },
+          },
+        },
+      };
+
+      const FROM_TYPE = { me: "me", you: "you" };
+
+      const initialMessage = {
+        from: FROM_TYPE.me,
+        message: "Hello my name is Janderson.",
+      };
+
+      function renderMessage(from, message) {
+        return `
+          <div>
+            <div>${from}</div>
+            <div>${message}</div>
+          </div>
+        `;
+      }
+
+      function loadMessage(from, message) {
+        const messagesContent = document.getElementById("messages_content");
+        messagesContent.innerHTML =
+          messagesContent.innerHTML + renderMessage(from, message);
+      }
+
+      loadMessage(initialMessage.from, initialMessage.message);
+    </script>
   </body>
 </html>
