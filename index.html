@@ -47,13 +47,20 @@
 
       const initialMessage = {
         from: FROM_TYPE.me,
-        message: "Hello my name is Janderson.",
+        message:
+          "🇧🇷 Oi meu nome é Janderson Souza<br />🇺🇸 Hello my name is Janderson Souza",
       };
 
       function renderMessage(from, message) {
+        if (from === FROM_TYPE.me)
+          return `
+            <div class="bg-white w-fit p-2 rounded-xl text-primary_600">
+              <div>${message}</div>
+            </div>
+          `;
+
         return `
-          <div>
-            <div>${from}</div>
+          <div className="bg-black">
             <div>${message}</div>
           </div>
         `;
